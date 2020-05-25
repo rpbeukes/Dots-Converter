@@ -3,14 +3,21 @@
   "version": "1.0.0",
   "scripts": {
     "start": "browser-sync --index retro.html --watch",
+    "start:prod": "browser-sync --index ./dist/retro.html",
     "test": "mocha --require esm './tests/**/*test.js'",
+    "build": "npm-run-all --sequential build:**",
+    "build:clear-dist": "rm -rf ./dist",
+    "build:create-dist": "mkdir dist",
+    "build:html-to-dist": "cp *.html ./dist",
+    "build:src-to-dist": "cp -R ./src ./dist/src",
     "generateBrailleTable": "node ./src/generateBrailleTranslateTable.js"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "chai": "^4.2.0",
     "esm": "^3.2.25",
-    "mocha": "^7.2.0"
+    "mocha": "^7.2.0",
+    "npm-run-all": "^4.1.5"
   },
   "author": "Originally LoveEevee but modified by rpbeukes",
   "license": "MIT",
