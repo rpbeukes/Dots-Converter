@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "start": "browser-sync --index retro.html --watch",
-    "start:prod": "browser-sync --index ./dist/retro.html",
+    "start:prod": "browser-sync --index ./dist/index.html",
     "test": "mocha --require esm './tests/**/*test.js'",
     "build": "npm-run-all --sequential build:**",
     "build:clear-dist": "rm -rf ./dist",
     "build:create-dist": "mkdir dist",
-    "build:html-to-dist": "cp *.html ./dist",
+    "build:html-to-dist": "cp retro.html ./dist/index.html",
     "build:src-to-dist": "cp -R ./src ./dist/src",
     "generateBrailleTable": "node ./src/generateBrailleTranslateTable.js"
   },
