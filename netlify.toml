@@ -1,0 +1,8 @@
+[build]
+  publish = "dist"
+  
+[context.production]
+  command = "npm run test && npm run build"
+
+[context.branch-deploy]  
+  command = "npm run test && npm run build"
