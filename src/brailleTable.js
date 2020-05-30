@@ -21,7 +21,7 @@ export const brailleTable = [
     brailleForm: "⠂",
     dots: 2,
     dotsBinary: "000010",
-    meaning: ",",
+    meaning: "(comma)",
   },
   {
     unicodeDecimal: 10243,
@@ -37,7 +37,7 @@ export const brailleTable = [
     brailleForm: "⠄",
     dots: 3,
     dotsBinary: "000100",
-    meaning: "'",
+    meaning: "(apostrophe)",
   },
   {
     unicodeDecimal: 10245,
@@ -293,7 +293,7 @@ export const brailleTable = [
     brailleForm: "⠤",
     dots: 36,
     dotsBinary: "100100",
-    meaning: "-(hyphen)",
+    meaning: "(hyphen)",
   },
   {
     unicodeDecimal: 10277,
