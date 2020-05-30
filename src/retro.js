@@ -6,6 +6,8 @@ import { createBrailleInstructions } from "./createBrailleInstructions.js";
 
   dots = dots || {};
 
+  dots.is6DotsImage = () => document.getElementById("6-dots-radio").checked;
+
   dots.onClickImageTo6Dots = onClickImageTo6Dots;
 
   dots.onClickCreateBrailleInstructions = () => {

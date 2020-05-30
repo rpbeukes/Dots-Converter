@@ -73,6 +73,12 @@
 						<input type="button" value="Dots editor" id="drawbtn" onclick="draw.toggle()"
 						><input type="button" value="Block editor" id="blokbtn" onclick="draw.toggle(0,1)">
 						<input type="button" value="Create Instructions" id="create-braille-instructions-btn" onclick="dots.onClickCreateBrailleInstructions()"/>
+						<div style="display: inline-block;">
+						<input type="radio" id="6-dots-radio" name="dots" value="6-dots" checked="checked"">
+							<label for="6-dots-radio">6 Dots</label><br>
+							<input type="radio" id="8-dots-radio" name="dots" value="8-dots"">
+							<label for="8-dots-radio">8 Dots</label><br>
+						</div>
 					</div>
 					<div id="drawroot" style="display:none">
 						<div id="toolbar">
@@ -280,15 +286,23 @@
 										tmp+=chkd?blx[parseInt(ina+''+inb+''+inc+''+ind,2)]:bzl[parseInt(inb+''+ind,2)]
 									}
 								}else{
-									ina=fuzw>pxls[7]?1:0
-									inb=fuzw>pxls[6]?1:0
+									if (dots.is6DotsImage()){
+										ina=0;
+										inb=0;
+									} else {
+										ina=fuzw>pxls[7]?1:0
+										inb=fuzw>pxls[6]?1:0
+									}
+
 									inc=fuzw>pxls[5]?1:0
 									ind=fuzw>pxls[3]?1:0
 									ine=fuzw>pxls[1]?1:0
 									inf=fuzw>pxls[4]?1:0
 									ing=fuzw>pxls[2]?1:0
 									inh=fuzw>pxls[0]?1:0
-									tmp+=brl[parseInt(ina+''+inb+''+inc+''+ind+''+ine+''+inf+''+ing+''+inh,2)]
+									const binStr = ina+''+inb+''+inc+''+ind+''+ine+''+inf+''+ing+''+inh;
+									// console.log(binStr, parseInt(binStr, 2));
+									tmp+=brl[parseInt(binStr, 2)]
 								}
 							}
 							tmp+='\n'
