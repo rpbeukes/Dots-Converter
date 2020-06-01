@@ -269,7 +269,11 @@
 								di('txt').value=Math.floor((yy/yln)*100)+'%'
 							yyy=yy*xln
 							for(xx=0;xx<xln;xx+=2){
-								for(pxls=[],yl=0;yl<4;yl++){
+								let numberOfRows = 4;
+								if (dots.is6DotsImage()){
+									numberOfRows = 3;
+								}
+								for(pxls=[],yl=0;yl<numberOfRows;yl++){
 									ex=((yy+yl)*xln+xx*1)*4
 									pxls.push(pix.data[ex]*pix.data[ex+1]*pix.data[ex+2])
 									pxls.push(pix.data[ex+4]*pix.data[ex+5]*pix.data[ex+6])
@@ -285,14 +289,8 @@
 										tmp+=chkd?blx[parseInt(ina+''+inb+''+inc+''+ind,2)]:bzl[parseInt(inb+''+ind,2)]
 									}
 								}else{
-									if (dots.is6DotsImage()){
-										ina=0;
-										inb=0;
-									} else {
-										ina=fuzw>pxls[7]?1:0
-										inb=fuzw>pxls[6]?1:0
-									}
-
+									ina=fuzw>pxls[7]?1:0
+									inb=fuzw>pxls[6]?1:0
 									inc=fuzw>pxls[5]?1:0
 									ind=fuzw>pxls[3]?1:0
 									ine=fuzw>pxls[1]?1:0
