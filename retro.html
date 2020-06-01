@@ -42,6 +42,9 @@
 		#blockmenu{position:absolute;background:none;border-spacing:0;border-collapse:collapse;z-index:2;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}
 		#blockmenu td{width:30px;height:30px;border:1px solid #000;text-align:center;vertical-align:middle;background:#fff;color:#888;font-size:18px}
 		#boolbar{position:relative;z-index:1}
+		.braille-table-cells{
+			padding-right: 0.7rem;
+		}
 	</style>
 	</head>
 	<body>
@@ -135,7 +138,7 @@
 				</td>
 				<td rowspan="2">
 					<div>
-						Brightness:
+						Brightness: <span id="brightness-value"></span>
 					</div>
 					<div id="swdots2" style="display:none">
 						<div class="blkbx"></div><input type="range" id="fuzzw" min="0" max="256" value="128"><div class="whtbx"></div>
@@ -170,7 +173,13 @@
 						di('cnclb1').style.display=di('cnclb2').style.display='inline-block';
 						di('cnvbt').disabled=true
 					">
+					<div id="braille-table-container">
+						<table id="braille-table">
+							<!-- Here the Braille Data will be displayed. -->
+						</table>
+					</div>
 				</td>
+
 			</tr>
 		</table>
 		<div style="margin-top: 0.5rem;margin-left: 1.4rem">
@@ -269,7 +278,11 @@
 								di('txt').value=Math.floor((yy/yln)*100)+'%'
 							yyy=yy*xln
 							for(xx=0;xx<xln;xx+=2){
-								for(pxls=[],yl=0;yl<4;yl++){
+								let numberOfRows = 4;
+								if (dots.is6DotsImage()){
+									numberOfRows = 3;
+								}
+								for(pxls=[],yl=0;yl<numberOfRows;yl++){
 									ex=((yy+yl)*xln+xx*1)*4
 									pxls.push(pix.data[ex]*pix.data[ex+1]*pix.data[ex+2])
 									pxls.push(pix.data[ex+4]*pix.data[ex+5]*pix.data[ex+6])
@@ -285,14 +298,8 @@
 										tmp+=chkd?blx[parseInt(ina+''+inb+''+inc+''+ind,2)]:bzl[parseInt(inb+''+ind,2)]
 									}
 								}else{
-									if (dots.is6DotsImage()){
-										ina=0;
-										inb=0;
-									} else {
-										ina=fuzw>pxls[7]?1:0
-										inb=fuzw>pxls[6]?1:0
-									}
-
+									ina=fuzw>pxls[7]?1:0
+									inb=fuzw>pxls[6]?1:0
 									inc=fuzw>pxls[5]?1:0
 									ind=fuzw>pxls[3]?1:0
 									ine=fuzw>pxls[1]?1:0
