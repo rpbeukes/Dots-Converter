@@ -42,6 +42,9 @@
 		#blockmenu{position:absolute;background:none;border-spacing:0;border-collapse:collapse;z-index:2;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}
 		#blockmenu td{width:30px;height:30px;border:1px solid #000;text-align:center;vertical-align:middle;background:#fff;color:#888;font-size:18px}
 		#boolbar{position:relative;z-index:1}
+		.braille-table-cells{
+			padding-right: 0.7rem;
+		}
 	</style>
 	</head>
 	<body>
@@ -170,7 +173,13 @@
 						di('cnclb1').style.display=di('cnclb2').style.display='inline-block';
 						di('cnvbt').disabled=true
 					">
+					<div id="braille-table-container">
+						<table id="braille-table">
+							<!-- Here the Braille Data will be displayed. -->
+						</table>
+					</div>
 				</td>
+
 			</tr>
 		</table>
 		<div style="margin-top: 0.5rem;margin-left: 1.4rem">
