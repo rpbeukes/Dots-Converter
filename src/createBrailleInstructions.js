@@ -36,11 +36,22 @@ export const createBrailleInstructions = (braillePatternString) => {
             repeatRecorded.push(mappedBraille.meaning);
           }
         } else {
-          repeatRecorded.push(mappedBraille.meaning);
-          // replace last array element as a repeat was detected
-          rowInstructions[
-            rowInstructions.length - 1
-          ] = `${mappedBraille.meaning}[${repeatRecorded.length} times]`;
+          if (mappedBraille) {
+            repeatRecorded.push(mappedBraille.meaning);
+            // replace last array element as a repeat was detected
+            rowInstructions[
+              rowInstructions.length - 1
+            ] = `${mappedBraille.meaning}[${repeatRecorded.length} times]`;
+          } else {
+            console.log(
+              `Could not mappedBraille of '${brailleChar}', repeatRecorded '${brailleChar}' instead.`
+            );
+            repeatRecorded.push(brailleChar);
+            // replace last array element as a repeat was detected
+            rowInstructions[
+              rowInstructions.length - 1
+            ] = `${brailleChar}[${repeatRecorded.length} times]`;
+          }
         }
       }
 
