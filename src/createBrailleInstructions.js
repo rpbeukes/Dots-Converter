@@ -46,12 +46,9 @@ export const createBrailleInstructions = (braillePatternString) => {
               maxRow: maxRow,
               error: `Error: Could not find braille match for '${brailleChar}'; change character ${chrIndex} in Row ${
                 rowIndex + 1
-              }: '${line
-                .replace("B", "")
-                .replace(
-                  "E",
-                  ""
-                )}'; line.charCodeAt(chrIndex): ${line.charCodeAt(chrIndex)}`,
+              }: '${line.replace("B", "").replace("E", "")}'; line.charCodeAt(${
+                chrIndex - 1
+              }): ${line.charCodeAt(chrIndex)}`,
             };
             break;
           }
