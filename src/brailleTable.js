@@ -3,7 +3,7 @@ export const brailleTable = [
     unicodeDecimal: 10240,
     unicodeCharNumber: "U+2800",
     brailleForm: "⠀",
-    dots: "",
+    dots: 0,
     dotsBinary: "000000",
     meaning: "(space)",
   },
