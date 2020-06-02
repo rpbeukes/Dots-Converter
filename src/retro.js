@@ -46,6 +46,18 @@ import { brailleTable } from "./brailleTable.js";
   let rowCount = 0;
   let newRow = brailleHTMLTable.insertRow(0);
   let columnCount = -1;
+
+  const copyToClipboard = (brailleStr) => {
+    console.log(`copyToClipboard ${brailleStr}`);
+    let el = document.createElement("textarea");
+    el.value = brailleStr;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    el = null;
+  };
+
   brailleTable.forEach((brailleItem, index) => {
     if (index % 8 === 0) {
       rowCount += 1;
@@ -55,6 +67,7 @@ import { brailleTable } from "./brailleTable.js";
     columnCount += 1;
     let cell = newRow.insertCell(columnCount);
     cell.innerHTML = brailleItem.brailleForm;
+    cell.onclick = () => copyToClipboard(cell.innerHTML);
     cell.className = "braille-table-cells";
   });
 })();
