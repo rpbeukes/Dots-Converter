@@ -14,9 +14,12 @@ import { brailleTable } from "./brailleTable.js";
       document.getElementById("txt").value
     );
 
-    document.getElementById(
-      "txt-braille-instructions"
-    ).value = brailleInstructionObj.instructions.join("");
+    document.getElementById("txt-braille-instructions").value =
+      (brailleInstructionObj.error &&
+        brailleInstructionObj.error +
+          "\n" +
+          brailleInstructionObj.instructions.join("")) ||
+      brailleInstructionObj.instructions.join("");
 
     document.getElementById(
       "txt-braille-instructions"
