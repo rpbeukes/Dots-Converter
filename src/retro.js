@@ -69,5 +69,6 @@ import { brailleTable } from "./brailleTable.js";
     cell.innerHTML = brailleItem.brailleForm;
     cell.onclick = () => copyToClipboard(cell.innerHTML);
     cell.className = "braille-table-cells";
+    cell.title = `dots-${brailleItem.dots}`;
   });
 })();
