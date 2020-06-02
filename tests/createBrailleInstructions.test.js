@@ -3,6 +3,11 @@ import { createBrailleInstructions } from "../src/createBrailleInstructions.js";
 
 describe("createBrailleInstructions", function () {
   describe("with one row", function () {
+    it("should return 'Make new line' when line only has a line feed character", function () {
+      const result = createBrailleInstructions("\n");
+      expect(result.instructions[0]).to.equal("Row 01: Make new line.\n");
+    });
+
     describe("should handle repeated characters", function () {
       it("when repeats are the first characters in the line", function () {
         const result = createBrailleInstructions("⠁⠁");
