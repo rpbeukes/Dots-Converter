@@ -45,5 +45,19 @@ describe("createBrailleInstructions", function () {
       expect(result.maxLineLength).to.equal(8);
       expect(result.maxRow).to.equal(1);
     });
+
+    it("should handle ascii 32 and convert to unicodeDecimal 10240 (braille space)", function () {
+      const testValue = `   `;
+      const result = createBrailleInstructions(testValue);
+      expect(result.instructions[0]).to.equal("Row 01: (space)[3 times]\n");
+    });
+
+    it("should output error when no match on braille table", function () {
+      const testValue = "⠃."; // period is ascii 46, it is not braille so expect error
+      const result = createBrailleInstructions(testValue);
+      expect(result.error).to.contain(
+        "Could not find braille match for '.'; change character 2 in Row 1: '⠃.';"
+      );
+    });
   });
 });
